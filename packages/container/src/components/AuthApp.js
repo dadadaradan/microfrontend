@@ -1,8 +1,8 @@
 import React, { useRef, useEffect } from 'react';
-import { mount } from 'marketing/Marketing';
+import { mount } from 'auth/AuthApp';
 import { useHistory } from 'react-router-dom';
 
-export default () => {
+export default ({ onSignIn }) => {
   const divRef = useRef(null);
   const history = useHistory();
 
@@ -20,6 +20,7 @@ export default () => {
     const { onContainerNavigate } = mount(divRef.current, {
       onNavigate,
       initialPath: history.location.pathname,
+      onSignIn,
     });
 
     history.listen(onContainerNavigate);
